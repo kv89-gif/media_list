@@ -48,7 +48,17 @@ st.markdown("This tool searches NewsAPI for a topic. Please use your own NewsAPI
 # --- SIDEBAR for Inputs (Edited Section) ---
 st.sidebar.header("⚙️ Settings")
 
-# --- NEW API KEY INPUT: Always visible for user entry ---
+# NEW INSTRUCTIONS ADDED HERE
+st.sidebar.markdown(
+    """
+    **1. Get Your API Key**
+    Register as an individual here to generate your key: 
+    [https://newsapi.org/register](https://newsapi.org/register)
+    
+    **2. Enter Key Below**
+    """
+)
+# --- API KEY INPUT: Always visible for user entry ---
 api_key = st.sidebar.text_input("Enter YOUR NewsAPI Key", type="password")
 
 query = st.sidebar.text_input("Enter search query (e.g., 'real estate')", "real estate")
