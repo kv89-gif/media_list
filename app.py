@@ -391,6 +391,20 @@ def combined_unique_journalists(rows: list[dict]) -> pd.DataFrame:
 st.set_page_config(layout="wide")
 st.title("📰 Journalist Finder (NewsAPI + CSV Combined)")
 st.caption("Combines journalists from NewsAPI and your uploaded CSV/XLSX, then de-duplicates to unique authors.")
+import streamlit as st
+
+st.markdown("""
+### 🧭 How to Use This Tool
+
+1. **Enter your NewsAPI Key** (get it from https://newsapi.org → *Get API Key*)
+2. **Enter the NewsAPI Search Query** *(only if you want to pull writers from external news sources)*
+3. **Upload the contacts list (CSV file)** *(can contain writer names and/or article URLs)*
+4. **Enter the niches** (example: Food, Legal, Real Estate, Finance)
+5. **Click Run** to generate a unique list of journalists
+""")
+
+st.markdown("---")
+
 
 st.sidebar.header("⚙️ Inputs")
 
