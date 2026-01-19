@@ -319,11 +319,9 @@ def contacts_to_rows(df: pd.DataFrame, niches: list[str], enrich_urls: bool) -> 
                     }
                 )
 
-        # Author can never be numeric; if not found, keep it blank
-    for x in rows:
-            x["Author"] = ""
+       # keep only with author (URL-only rows might fail extraction)
+    return [x for x in rows if x.get("Author")]
 
-    return rows
 
       
 
