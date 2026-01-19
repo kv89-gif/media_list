@@ -319,20 +319,17 @@ def contacts_to_rows(df: pd.DataFrame, niches: list[str], enrich_urls: bool) -> 
                     }
                 )
 
-    # keep only with author (URL-only rows might fail extraction)
-  # CHANGE: keep CSV rows even if author not found; author can never be numeric
-for x in rows:
-    a = _safe_strip(x.get("Author"))
-    if not a:
-        x["Author"] = ""
-        continue
-    # numeric check (including decimals like 3.0)
-    if re.fullmatch(r"\d+(\.\d+)?", a):
-        x["Author"] = ""
-    else:
-        x["Author"] = a
+        # Author can never be numeric; if not found, keep it blank
+    for x in rows:
+        a = _safe_strip(x.get("Author"))
+        if not a or re.fullmatch(r"\d+(\.\d+)?", a):
+            x["Author"] = ""
+        else:
+            x["Author"] = a
 
-return rows
+    return rows
+
+      
 
 
 
