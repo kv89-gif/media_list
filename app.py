@@ -321,11 +321,7 @@ def contacts_to_rows(df: pd.DataFrame, niches: list[str], enrich_urls: bool) -> 
 
         # Author can never be numeric; if not found, keep it blank
     for x in rows:
-        a = _safe_strip(x.get("Author"))
-        if not a or re.fullmatch(r"\d+(\.\d+)?", a):
             x["Author"] = ""
-        else:
-            x["Author"] = a
 
     return rows
 
